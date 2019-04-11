@@ -1,0 +1,43 @@
+{
+  "name": "reaction",
+  "private": true,
+  "version": "0.0.1",
+  "description": "A simple wrapper to easily create actions, reducers, and sagas.",
+  "main": "./dist/main.js",
+  "scripts": {
+    "test": "jest",
+    "build": "webpack"
+  },
+  "author": "Michael Hottman <hottman.michael@gmail.com>",
+  "keywords": [
+    "npm",
+    "module",
+    "node",
+    "javascript",
+    "redux",
+    "react",
+    "saga",
+    "redux-saga",
+    "reaction"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "case": "^1.6.1",
+    "deepmerge": "^3.2.0",
+    "is-generator-function": "^1.0.7",
+    "normalizr": "^3.3.0",
+    "redux": "^4.0.1",
+    "redux-saga": "^1.0.2",
+    "regenerator-runtime": "^0.13.2",
+    "superagent": "^5.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "babel-loader": "^8.0.5",
+    "jest": "^24.7.1",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  }
+}
