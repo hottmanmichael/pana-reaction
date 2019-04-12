@@ -1,7 +1,7 @@
 {
   "name": "pana-reaction",
   "private": false,
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A simple wrapper to easily create actions, reducers, and sagas.",
   "main": "./dist/main.js",
   "scripts": {
