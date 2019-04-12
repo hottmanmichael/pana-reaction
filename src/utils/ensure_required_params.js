@@ -35,10 +35,14 @@ export default ({ actionName, requiredParams, action }) => {
     return actionResult;
   }
 
-  return (function() {
+  return (function validateParams() {
     if (Array.isArray(requiredParams) && requiredParams.length) {
       requiredParams.forEach(param => {
-        validateAtKey(actionResult, param, actionName);
+        try {
+          validateAtKey(actionResult, param, actionName);
+        } catch (e) {
+          console.error(e);
+        }
       });
     }
     return actionResult;

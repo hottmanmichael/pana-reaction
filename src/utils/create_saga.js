@@ -1,11 +1,13 @@
 import regeneratorRuntime from 'regenerator-runtime';
 import { all, takeLatest, takeEvery, fork } from 'redux-saga/effects';
+import { isFunction } from './type_check';
 
 const defaultOptions = {
-  takeMethod: 'takeEvery',
+  yield: 'takeEvery',
+  watch: undefined,
 };
 
-function createSaga(constant, fn, options = defaultOptions) {
+function createSaga(constant, fn, _options = defaultOptions) {
   if ('string' !== typeof constant) {
     throw new Error(
       `The argument (${constant}) passed into createAsync is not a valid parameter. Constant must be typeof string.`
@@ -20,15 +22,16 @@ function createSaga(constant, fn, options = defaultOptions) {
   //   return;
   // }
 
-  var method;
-  if (options.takeMethod === 'takeEvery') {
-    method = takeEvery;
-  } /* if (options.takeMethod === 'takeLatest') */ else {
-    method = takeLatest;
-  }
+  const options = Object.assign({}, defaultOptions, _options);
 
-  function* watch() {
-    yield method(constant, fn);
+  var watch;
+  if (options.watch && isFunction(options.watch)) {
+    watch = options.watch;
+  } else {
+    const method = options.yield === 'takeEvery' ? takeEvery : takeLatest;
+    watch = function* watch() {
+      yield method(constant, fn);
+    };
   }
 
   return {

@@ -66,7 +66,7 @@ const defaultAsyncOptions = {
   takeMethod: 'takeEvery',
 };
 
-export default class Reaction {
+class Reaction {
   constructor(options) {
     this._options = Object.assign({}, defaultOptions, options);
 
@@ -146,8 +146,8 @@ export default class Reaction {
     }
 
     if (flow.Reducer) {
-      this.Reducer = {
-        ...this.Reducer,
+      this.Reducers = {
+        ...this.Reducers,
         ...flow.Reducer,
       };
     }
@@ -186,3 +186,5 @@ export default class Reaction {
     return createReducer(this.initialState, this.Reducers);
   }
 }
+
+export default Reaction;
